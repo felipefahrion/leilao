@@ -16,7 +16,7 @@ namespace LeilaoDoMeuCoracao.PL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=DBMovieCF;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=DBLeilao;Trusted_Connection=True;");
         }   
     }
 }
