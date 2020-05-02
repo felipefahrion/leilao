@@ -1,0 +1,12 @@
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.exe
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.deps.json
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.runtimeconfig.json
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.runtimeconfig.dev.json
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.dll
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\bin\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.pdb
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.csproj.CoreCompileInputs.cache
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.AssemblyInfoInputs.cache
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.AssemblyInfo.cs
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.dll
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.pdb
+C:\Users\Felipe Fahrion\Downloads\PSA\LeilaoDoMeuCoracao\LeilaoDoMeuCoracao\obj\Debug\netcoreapp3.1\LeilaoDoMeuCoracao.genruntimeconfig.cache
