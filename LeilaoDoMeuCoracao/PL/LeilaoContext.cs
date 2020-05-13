@@ -13,6 +13,7 @@ namespace LeilaoDoMeuCoracao.PL
         public DbSet<Lance> Lances { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Leilao> Leiloes { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

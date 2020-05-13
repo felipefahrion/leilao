@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="BLL\Facade\" />
-    <Folder Include="BLL\Dao\" />
     <Folder Include="BLL\Exception\" />
   </ItemGroup>
 
