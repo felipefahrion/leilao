@@ -12,10 +12,19 @@ namespace LeilaoDoMeuCoracao.PL
         public DateTime DataInicio { get; set; }
         public DateTime DataMaxLances { get; set; }
         public double Valor { get; set; }
-        public LeilaoStrategy TipoLeilaoStrategy { get; set; }
         public StatusLeilaoEnum StatusLeilaoEnum { get; set; }
         public ICollection<Item> Itens { get; set; }
         public ICollection<Lance> Lances { get; set; }
+
+        public void LeilaoOferta()
+        {
+
+        }
+
+        public void LeilaoDemanda()
+        {
+
+        }
 
     }
 }

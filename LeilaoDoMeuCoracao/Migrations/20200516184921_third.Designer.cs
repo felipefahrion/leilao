@@ -4,14 +4,16 @@ using LeilaoDoMeuCoracao.PL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LeilaoDoMeuCoracao.Migrations
 {
     [DbContext(typeof(LeilaoContext))]
-    partial class LeilaoContextModelSnapshot : ModelSnapshot
+    [Migration("20200516184921_third")]
+    partial class third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

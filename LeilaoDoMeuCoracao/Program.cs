@@ -9,6 +9,70 @@ namespace LeilaoDoMeuCoracao
     {
         static void Main(string[] args)
         {
+            using (var db = new LeilaoContext())
+            {
+                #region UsersSeeding
+                if (db.Users.Count() == 0)
+                {
+                    UsersSeed(db);
+                }
+                #endregion
+
+                #region ItensComCategoriasSeeding
+                if (db.Itens.Count() == 0)
+                {
+                    ItensComCategoriasSeed(db);
+                }
+                #endregion
+            }
+
+            LeilaoContext context = new LeilaoContext();
+
+            #region Consulta Categorias
+            Console.WriteLine();
+            Console.WriteLine("Categorias");
+            Console.WriteLine();
+
+            var categorias = from c in context.Categorias
+                             select c.Nome;
+
+            foreach (String categoriasNome in categorias)
+            {
+                Console.WriteLine(categoriasNome);
+            }
+            #endregion
+
+            #region Consulta Itens
+            Console.WriteLine();
+            Console.WriteLine("Itens");
+            Console.WriteLine();
+
+            var itens = from c in context.Itens
+                             select c.Nome;
+
+            foreach (String itemNome in itens)
+            {
+                Console.WriteLine(itemNome);
+            }
+            #endregion
+
+            #region Consulta Users
+            Console.WriteLine();
+            Console.WriteLine("Users");
+            Console.WriteLine();
+
+            var users = from c in context.Users
+                        select c.Nome;
+
+            foreach (String userNome in users)
+            {
+                Console.WriteLine(userNome);
+            }
+            #endregion
+        }
+
+        private static void ItensComCategoriasSeed(LeilaoContext db)
+        {
             List<Categoria> categorias = new List<Categoria>
             {
                 new Categoria {Nome = "Informatica",  Descricao = "Produtos Informatica"},
@@ -25,6 +89,8 @@ namespace LeilaoDoMeuCoracao
                 new Categoria {Nome = "Filmes e Séries", Descricao = "Entreterimento"},
                 new Categoria {Nome = "Infantil", Descricao = "Produtos para crianças"},
             };
+            db.Categorias.AddRange(categorias);
+            db.SaveChanges();
 
             List<Item> itens = new List<Item>
             {
@@ -78,12 +144,56 @@ namespace LeilaoDoMeuCoracao
                     Imagem = ""
                 }
             };
+            db.Itens.AddRange(itens);
+            db.SaveChanges();
+        }
 
-            Console.WriteLine("Categorias");
-            categorias.ForEach(c => Console.WriteLine(c.Nome));
-            Console.WriteLine();
-            Console.WriteLine("Itens");
-            itens.ForEach(c => Console.WriteLine(c.Nome));
+        private static void UsersSeed(LeilaoContext db)
+        {
+            List<User> usuarios = new List<User> {
+                new User
+                {
+                    Nome = "Thais",
+                    Email = "thais.fernandes@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Marina",
+                    Email = "marina.moreira@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Arthur",
+                    Email = "arthur.maciel@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Felipe",
+                    Email = "felipe.fahrion@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Bruno",
+                    Email = "bruno.abbad@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                }
+            };
+            db.Users.AddRange(usuarios);
+            db.SaveChanges();
         }
     }
 }
