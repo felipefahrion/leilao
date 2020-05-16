@@ -178,3 +178,8 @@ C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.
 C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\LeilaoCoracaoWeb.dll
 C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\LeilaoCoracaoWeb.pdb
 C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\LeilaoCoracaoWeb.genruntimeconfig.cache
+C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Create.cshtml.g.cs
+C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Delete.cshtml.g.cs
+C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Details.cshtml.g.cs
+C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Edit.cshtml.g.cs
+C:\Users\Felipe Fahrion\Downloads\leilao\LeilaoCoracaoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Index.cshtml.g.cs
