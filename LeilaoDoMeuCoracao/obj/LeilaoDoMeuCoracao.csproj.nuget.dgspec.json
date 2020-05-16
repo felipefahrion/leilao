@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arthu\\Desktop\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {}
+    "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arthu\\Desktop\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {
+    "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj",
+        "projectUniqueName": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj",
         "projectName": "LeilaoDoMeuCoracao",
-        "projectPath": "C:\\Users\\arthu\\Desktop\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj",
-        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arthu\\Desktop\\leilao\\LeilaoDoMeuCoracao\\obj\\",
+        "projectPath": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj",
+        "packagesPath": "C:\\Users\\Felipe Fahrion\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felipe Fahrion\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
