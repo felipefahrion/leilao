@@ -1,0 +1,46 @@
+﻿@model LeilaoDoMeuCoracao.PL.Leilao
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Criar Leilão</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataMaxLances" class="control-label"></label>
+                <input asp-for="DataMaxLances" class="form-control" />
+                <span asp-validation-for="DataMaxLances" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusLeilaoEnum" class="control-label"></label>
+                <select asp-for="StatusLeilaoEnum"  asp-items="Html.GetEnumSelectList<LeilaoDoMeuCoracao.PL.Enum.TipoLeilaoEnum>()" class="form-control"></select>
+                <span asp-validation-for="StatusLeilaoEnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar à lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
