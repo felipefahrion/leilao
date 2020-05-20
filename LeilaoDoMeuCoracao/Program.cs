@@ -9,70 +9,51 @@ namespace LeilaoDoMeuCoracao
     {
         static void Main(string[] args)
         {
-            using (var db = new LeilaoContext())
-            {
-                #region UsersSeeding
-                if (db.Users.Count() == 0)
-                {
-                    UsersSeed(db);
-                }
-                #endregion
-
-                #region ItensComCategoriasSeeding
-                if (db.Itens.Count() == 0)
-                {
-                    ItensComCategoriasSeed(db);
-                }
-                #endregion
-            }
-
             LeilaoContext context = new LeilaoContext();
 
-            #region Consulta Categorias
-            Console.WriteLine();
-            Console.WriteLine("Categorias");
-            Console.WriteLine();
+            List<User> usuarios = new List<User> {
+                new User
+                {
+                    Nome = "Thais",
+                    Email = "thais.fernandes@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Marina",
+                    Email = "marina.moreira@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Arthur",
+                    Email = "arthur.maciel@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Felipe",
+                    Email = "felipe.fahrion@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                },
+                new User
+                {
+                    Nome = "Bruno",
+                    Email = "bruno.abbad@edu.pucrs.br",
+                    Cpf = "00100100122",
+                    Cnpj = "",
+                    Telefone = ""
+                }
+            };
 
-            var categorias = from c in context.Categorias
-                             select c.Nome;
-
-            foreach (String categoriasNome in categorias)
-            {
-                Console.WriteLine(categoriasNome);
-            }
-            #endregion
-
-            #region Consulta Itens
-            Console.WriteLine();
-            Console.WriteLine("Itens");
-            Console.WriteLine();
-
-            var itens = from c in context.Itens
-                             select c.Nome;
-
-            foreach (String itemNome in itens)
-            {
-                Console.WriteLine(itemNome);
-            }
-            #endregion
-
-            #region Consulta Users
-            Console.WriteLine();
-            Console.WriteLine("Users");
-            Console.WriteLine();
-
-            var users = from c in context.Users
-                        select c.Nome;
-
-            foreach (String userNome in users)
-            {
-                Console.WriteLine(userNome);
-            }
-            #endregion
-        }
-
-        private static void ItensComCategoriasSeed(LeilaoContext db)
-        {
             List<Categoria> categorias = new List<Categoria>
             {
                 new Categoria {Nome = "Informatica",  Descricao = "Produtos Informatica"},
@@ -89,8 +70,6 @@ namespace LeilaoDoMeuCoracao
                 new Categoria {Nome = "Filmes e Séries", Descricao = "Entreterimento"},
                 new Categoria {Nome = "Infantil", Descricao = "Produtos para crianças"},
             };
-            db.Categorias.AddRange(categorias);
-            db.SaveChanges();
 
             List<Item> itens = new List<Item>
             {
@@ -144,55 +123,218 @@ namespace LeilaoDoMeuCoracao
                     Imagem = ""
                 }
             };
+
+            List<Lance> lances = new List<Lance> {
+                new Lance
+                {
+                    LanceId = 11,
+                    DataHoraLance = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    Valor = 300,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Bruno")
+                },
+                new Lance
+                {
+                    LanceId = 12,
+                    DataHoraLance = new DateTime(2020, 7, 30, 12, 0, 0, 0),
+                    Valor = 400,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Felipe")
+                },
+                new Lance
+                {
+                    LanceId = 13,
+                    DataHoraLance = new DateTime(2020, 2, 22, 12, 0, 0, 0),
+                    Valor = 500,
+                    Aceito = true,
+                    User = usuarios.Single(u => u.Nome == "Marina")
+                }
+            };
+
+            List<Lance> lances2 = new List<Lance> {
+                new Lance
+                {
+                    LanceId = 21,
+                    DataHoraLance = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    Valor = 300,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Bruno")
+                },
+                new Lance
+                {
+                    LanceId = 22,
+                    DataHoraLance = new DateTime(2020, 7, 30, 12, 0, 0, 0),
+                    Valor = 400,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Felipe")
+                },
+                new Lance
+                {
+                    LanceId = 23,
+                    DataHoraLance = new DateTime(2020, 2, 22, 12, 0, 0, 0),
+                    Valor = 500,
+                    Aceito = true,
+                    User = usuarios.Single(u => u.Nome == "Marina")
+                }
+            };
+
+            List<Lance> lances3 = new List<Lance> {
+                new Lance
+                {
+                    Valor = 300,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Bruno")
+                },
+                new Lance
+                {
+                    DataHoraLance = new DateTime(2020, 7, 30, 12, 0, 0, 0),
+                    Valor = 400,
+                    Aceito = false,
+                    User = usuarios.Single(u => u.Nome == "Felipe")
+                },
+                new Lance
+                {
+                    DataHoraLance = new DateTime(2020, 2, 22, 12, 0, 0, 0),
+                    Valor = 500,
+                    Aceito = true,
+                    User = usuarios.Single(u => u.Nome == "Marina")
+                }
+            };
+
+            List<Leilao> leiloes = new List<Leilao> {
+                new Leilao
+                {
+                    UserCriador = usuarios.Single(u => u.Nome == "Thais"),
+                    DataInicio = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    Valor = 300.50,
+                    StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.ABERTO,
+                    Itens = new List<Item>(),
+                    Lances = lances
+                },
+                new Leilao
+                {
+                    UserCriador = usuarios.Single(u => u.Nome == "Thais"),
+                    DataInicio = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    Valor = 100.0,
+                    StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.ABERTO,
+                    Itens = new List<Item>(),
+                    Lances = lances2
+                },
+                new Leilao
+                {
+                    UserCriador = usuarios.Single(u => u.Nome == "Thais"),
+                    DataInicio = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
+                    Valor = 800.90,
+                    StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.FECHADO,
+                    Itens = itens,
+                    Lances = lances3
+                }
+            };
+
+            using (var db = new LeilaoContext())
+            {
+                #region UsersSeeding
+                if (db.Users.Count() == 0)
+                {
+                    UsersSeed(db, usuarios);
+                }
+                #endregion
+
+                #region ItensComCategoriasSeeding
+                if (db.Itens.Count() == 0)
+                {
+                    ItensComCategoriasSeed(db, categorias, itens);
+                }
+                #endregion
+
+                #region LeiloesSeeding
+                if (db.Leiloes.Count() == 0)
+                {
+                    LeiloesSeed(db, leiloes);
+                }
+                #endregion
+
+                #region LancesSeeding
+                if (db.Lances.Count() == 0)
+                {
+                    LancesSeed(db, lances);
+                    LancesSeed(db, lances2);
+                    LancesSeed(db, lances3);
+                }
+                #endregion
+            }
+
+            #region Consulta Categorias
+            Console.WriteLine();
+            Console.WriteLine("Categorias");
+            Console.WriteLine();
+
+            var categoriasConsulta = from c in context.Categorias
+                             select c.Nome;
+
+            foreach (String categoriasNome in categoriasConsulta)
+            {
+                Console.WriteLine(categoriasNome);
+            }
+            #endregion
+
+            #region Consulta Itens
+            Console.WriteLine();
+            Console.WriteLine("Itens");
+            Console.WriteLine();
+
+            var itensConsulta = from c in context.Itens
+                        select c.Nome;
+
+            foreach (String itemNome in itensConsulta)
+            {
+                Console.WriteLine(itemNome);
+            }
+            #endregion
+
+            #region Consulta Users
+            Console.WriteLine();
+            Console.WriteLine("Users");
+            Console.WriteLine();
+
+            var users = from c in context.Users
+                        select c.Nome;
+
+            foreach (String userNome in users)
+            {
+                Console.WriteLine(userNome);
+            }
+            #endregion
+        }
+
+        private static void ItensComCategoriasSeed(LeilaoContext db, List<Categoria> categorias, List<Item> itens)
+        {
+            
+            db.Categorias.AddRange(categorias);
+            db.SaveChanges();
+
             db.Itens.AddRange(itens);
             db.SaveChanges();
         }
 
-        private static void UsersSeed(LeilaoContext db)
+        private static void UsersSeed(LeilaoContext db, List<User> usuarios)
         {
-            List<User> usuarios = new List<User> {
-                new User
-                {
-                    Nome = "Thais",
-                    Email = "thais.fernandes@edu.pucrs.br",
-                    Cpf = "00100100122",
-                    Cnpj = "",
-                    Telefone = ""
-                },
-                new User
-                {
-                    Nome = "Marina",
-                    Email = "marina.moreira@edu.pucrs.br",
-                    Cpf = "00100100122",
-                    Cnpj = "",
-                    Telefone = ""
-                },
-                new User
-                {
-                    Nome = "Arthur",
-                    Email = "arthur.maciel@edu.pucrs.br",
-                    Cpf = "00100100122",
-                    Cnpj = "",
-                    Telefone = ""
-                },
-                new User
-                {
-                    Nome = "Felipe",
-                    Email = "felipe.fahrion@edu.pucrs.br",
-                    Cpf = "00100100122",
-                    Cnpj = "",
-                    Telefone = ""
-                },
-                new User
-                {
-                    Nome = "Bruno",
-                    Email = "bruno.abbad@edu.pucrs.br",
-                    Cpf = "00100100122",
-                    Cnpj = "",
-                    Telefone = ""
-                }
-            };
             db.Users.AddRange(usuarios);
+            db.SaveChanges();
+        }
+
+        public static void LeiloesSeed(LeilaoContext db, List<Leilao> leiloes)
+        {
+            db.Leiloes.AddRange(leiloes);
+            db.SaveChanges();
+        }
+                
+        public static void LancesSeed(LeilaoContext db, List<Lance> lances)
+        {
+            db.Lances.AddRange(lances);
             db.SaveChanges();
         }
     }
