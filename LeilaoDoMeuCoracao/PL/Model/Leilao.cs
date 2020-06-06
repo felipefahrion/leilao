@@ -17,18 +17,8 @@ namespace LeilaoDoMeuCoracao.PL
         public double Valor { get; set; }
         [Display(Name = "Tipo do leilão")]
         public StatusLeilaoEnum StatusLeilaoEnum { get; set; }
+        public TipoLeilaoEnum TipoLeilaoEnum { get; set; }
         public ICollection<Item> Itens { get; set; }
         public ICollection<Lance> Lances { get; set; }
-
-        public void LeilaoOferta()
-        {
-
-        }
-
-        public void LeilaoDemanda()
-        {
-
-        }
-
     }
 }

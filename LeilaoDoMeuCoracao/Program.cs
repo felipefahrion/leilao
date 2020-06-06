@@ -209,6 +209,7 @@ namespace LeilaoDoMeuCoracao
                     DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
                     Valor = 300.50,
                     StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.ABERTO,
+                    TipoLeilaoEnum = PL.Enum.TipoLeilaoEnum.OFERTA,
                     Itens = new List<Item>(),
                     Lances = lances
                 },
@@ -219,6 +220,7 @@ namespace LeilaoDoMeuCoracao
                     DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
                     Valor = 100.0,
                     StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.ABERTO,
+                    TipoLeilaoEnum = PL.Enum.TipoLeilaoEnum.DEMANDA,
                     Itens = new List<Item>(),
                     Lances = lances2
                 },
@@ -229,6 +231,7 @@ namespace LeilaoDoMeuCoracao
                     DataMaxLances = new DateTime(2020, 4, 16, 12, 0, 0, 0),
                     Valor = 800.90,
                     StatusLeilaoEnum = PL.Enum.StatusLeilaoEnum.FECHADO,
+                    TipoLeilaoEnum = PL.Enum.TipoLeilaoEnum.DEMANDA,
                     Itens = itens,
                     Lances = lances3
                 }
