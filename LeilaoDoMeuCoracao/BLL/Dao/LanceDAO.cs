@@ -33,5 +33,7 @@ namespace LeilaoDoMeuCoracao.BLL.Dao
             _context.Add(lance);
             await _context.SaveChangesAsync();
         }
+
+
     }
 }

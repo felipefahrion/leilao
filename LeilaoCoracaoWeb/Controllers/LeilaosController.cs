@@ -6,24 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeilaoDoMeuCoracao.PL;
+using LeilaoDoMeuCoracao.BLL.Facade;
 
 namespace LeilaoCoracaoWeb.Controllers
 {
     public class LeilaosController : Controller
     {
-        private readonly LeilaoContext _context;
+        private readonly LeilaoFacade leilaoFacade;
 
-        public LeilaosController(LeilaoContext context)
+        public LeilaosController()
         {
-            _context = context;
+            leilaoFacade = new LeilaoFacade();
         }
 
         // GET: Leilaos
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Leiloes.ToListAsync());
-        }
-
+        public async Task<IActionResult> Index() => View(await leilaoFacade.ListAll());
+       
         // GET: Leilaos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -32,8 +30,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var leilao = await _context.Leiloes
-                .FirstOrDefaultAsync(m => m.LeilaoId == id);
+            var leilao = await leilaoFacade.DetailsById(id);
+
             if (leilao == null)
             {
                 return NotFound();
@@ -49,16 +47,14 @@ namespace LeilaoCoracaoWeb.Controllers
         }
 
         // POST: Leilaos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("LeilaoId,DataInicio,DataMaxLances,Valor,StatusLeilaoEnum")] Leilao leilao)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(leilao);
-                await _context.SaveChangesAsync();
+                await leilaoFacade.Create(leilao);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(leilao);
@@ -72,7 +68,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var leilao = await _context.Leiloes.FindAsync(id);
+            var leilao = await leilaoFacade.EditById(id);
+
             if (leilao == null)
             {
                 return NotFound();
@@ -81,8 +78,6 @@ namespace LeilaoCoracaoWeb.Controllers
         }
 
         // POST: Leilaos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("LeilaoId,DataInicio,DataMaxLances,Valor,StatusLeilaoEnum")] Leilao leilao)
@@ -96,12 +91,11 @@ namespace LeilaoCoracaoWeb.Controllers
             {
                 try
                 {
-                    _context.Update(leilao);
-                    await _context.SaveChangesAsync();
+                    await leilaoFacade.EditByIdAndObject(id, leilao);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LeilaoExists(leilao.LeilaoId))
+                    if (!leilaoFacade.LeilaoExists(leilao.LeilaoId))
                     {
                         return NotFound();
                     }
@@ -123,8 +117,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var leilao = await _context.Leiloes
-                .FirstOrDefaultAsync(m => m.LeilaoId == id);
+            var leilao = await leilaoFacade.DetailsById(id);
+
             if (leilao == null)
             {
                 return NotFound();
@@ -138,15 +132,9 @@ namespace LeilaoCoracaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leilao = await _context.Leiloes.FindAsync(id);
-            _context.Leiloes.Remove(leilao);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            await leilaoFacade.DeleteById(id);
 
-        private bool LeilaoExists(int id)
-        {
-            return _context.Leiloes.Any(e => e.LeilaoId == id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

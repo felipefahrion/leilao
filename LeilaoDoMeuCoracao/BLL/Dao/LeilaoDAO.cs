@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,5 +64,7 @@ namespace LeilaoDoMeuCoracao.BLL.Dao
             _context.Leiloes.Remove(leilao);
             await _context.SaveChangesAsync();
         }
+
+        public bool LeilaoExists(int id) => _context.Leiloes.Any(e => e.LeilaoId == id);
     }
 }

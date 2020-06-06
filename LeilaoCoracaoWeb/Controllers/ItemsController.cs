@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeilaoDoMeuCoracao.PL;
+using LeilaoDoMeuCoracao.BLL.Facade;
 
 namespace LeilaoCoracaoWeb.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly LeilaoContext _context;
+        private ItemFacade itemFacade;
 
-        public ItemsController(LeilaoContext context)
+        public ItemsController()
         {
-            _context = context;
+            itemFacade = new ItemFacade();
         }
 
         // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Itens.ToListAsync());
+            return View(await itemFacade.ListAll());
         }
 
         // GET: Items/Details/5
@@ -32,8 +29,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Itens
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+            var item = await itemFacade.DetailsById(id);
+
             if (item == null)
             {
                 return NotFound();
@@ -49,16 +46,13 @@ namespace LeilaoCoracaoWeb.Controllers
         }
 
         // POST: Items/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ItemId,Nome,DescricaoBreve,DescricaoCompleta,Imagem")] Item item)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(item);
-                await _context.SaveChangesAsync();
+                await itemFacade.Create(item);
                 return RedirectToAction(nameof(Index));
             }
             return View(item);
@@ -72,7 +66,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Itens.FindAsync(id);
+            var item = await itemFacade.EditById(id);
+
             if (item == null)
             {
                 return NotFound();
@@ -81,8 +76,6 @@ namespace LeilaoCoracaoWeb.Controllers
         }
 
         // POST: Items/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ItemId,Nome,DescricaoBreve,DescricaoCompleta,Imagem")] Item item)
@@ -96,12 +89,11 @@ namespace LeilaoCoracaoWeb.Controllers
             {
                 try
                 {
-                    _context.Update(item);
-                    await _context.SaveChangesAsync();
+                    await itemFacade.EditByIdAndObject(id, item);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ItemExists(item.ItemId))
+                    if (!itemFacade.ItemExists(item.ItemId))
                     {
                         return NotFound();
                     }
@@ -123,8 +115,8 @@ namespace LeilaoCoracaoWeb.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Itens
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+            var item = await itemFacade.DetailsById(id);
+
             if (item == null)
             {
                 return NotFound();
@@ -138,15 +130,9 @@ namespace LeilaoCoracaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var item = await _context.Itens.FindAsync(id);
-            _context.Itens.Remove(item);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            await itemFacade.DeleteById(id);
 
-        private bool ItemExists(int id)
-        {
-            return _context.Itens.Any(e => e.ItemId == id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
