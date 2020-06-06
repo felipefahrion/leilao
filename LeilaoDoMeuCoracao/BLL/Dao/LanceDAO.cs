@@ -21,11 +21,15 @@ namespace LeilaoDoMeuCoracao.BLL.Dao
             return _context;
         }
 
-        public async Task<List<Lance>> ListAll() => await _context.Lances.ToListAsync();
+        public async Task<List<Lance>> ListAll()
+        {
+            var leilaoContext = _context.Lances.Include(l => l.Leilao);
+            return await leilaoContext.ToListAsync();
+        }
 
         public async Task<Lance> DetailsById(int? id)
         {
-            return await _context.Lances.FirstOrDefaultAsync(m => m.LanceId == id);
+            return await _context.Lances.Include(l => l.Leilao).FirstOrDefaultAsync(m => m.LanceId == id);
         }
 
         public async Task Create(Lance lance)
