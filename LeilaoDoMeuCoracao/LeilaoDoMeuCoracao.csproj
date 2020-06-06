@@ -6,8 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BLL\Exception\**" />
+    <EmbeddedResource Remove="BLL\Exception\**" />
+    <None Remove="BLL\Exception\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="BLL\Facade\" />
-    <Folder Include="BLL\Exception\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -27,8 +27,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="StatusLeilaoEnum" class="control-label"></label>
-                <select asp-for="StatusLeilaoEnum"  asp-items="Html.GetEnumSelectList<LeilaoDoMeuCoracao.PL.Enum.TipoLeilaoEnum>()" class="form-control"></select>
+                <select asp-for="StatusLeilaoEnum" asp-items="Html.GetEnumSelectList<LeilaoDoMeuCoracao.PL.Enum.StatusLeilaoEnum>()" class="form-control"></select>
                 <span asp-validation-for="StatusLeilaoEnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoLeilaoEnum" class="control-label"></label>
+                <select asp-for="TipoLeilaoEnum" asp-items="Html.GetEnumSelectList<LeilaoDoMeuCoracao.PL.Enum.TipoLeilaoEnum>()" class="form-control"></select>
+                <span asp-validation-for="TipoLeilaoEnum" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" />

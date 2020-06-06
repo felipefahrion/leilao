@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace LeilaoDoMeuCoracao.PL
@@ -15,10 +16,21 @@ namespace LeilaoDoMeuCoracao.PL
         [Display(Name = "Data máxima de lances")]
         public DateTime DataMaxLances { get; set; }
         public double Valor { get; set; }
-        [Display(Name = "Tipo do leilão")]
+        [Display(Name = "Status do leião")]
         public StatusLeilaoEnum StatusLeilaoEnum { get; set; }
+        [Display(Name = "Tipo do leilão")]
         public TipoLeilaoEnum TipoLeilaoEnum { get; set; }
         public ICollection<Item> Itens { get; set; }
         public ICollection<Lance> Lances { get; set; }
+
+        public void DeterminarGanhadorDemanda()
+        {
+            var ganahdor = Lances.OrderBy(l => l.Valor).Select(x => (x.DataHoraLance <= DataMaxLances) && x.Valor >= Valor).First();
+        }
+
+        public void DeterminarGnahadorOferta()
+        {
+            var ganahdor = Lances.OrderByDescending(l => l.Valor).Select(x => (x.DataHoraLance <= DataMaxLances) && x.Valor <= Valor).First();
+        }
     }
 }

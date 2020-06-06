@@ -4,7 +4,8 @@ using System.Text;
 
 namespace LeilaoDoMeuCoracao.BLL.Facade
 {
-    class LeilaoFacade
+    public class LeilaoFacade
     {
+
     }
 }
