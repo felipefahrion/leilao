@@ -22,5 +22,24 @@ namespace LeilaoDoMeuCoracao.PL
         public TipoLeilaoEnum TipoLeilaoEnum { get; set; }
         public ICollection<Item> Itens { get; set; }
         public ICollection<Lance> Lances { get; set; }
+
+        public void DeterminarGanhadorDemanda()
+        {
+            Lance sopa = Lances.Where(x => (x.DataHoraLance <= DataMaxLances) && x.Valor >= Valor).ToList().FirstOrDefault();
+            Console.WriteLine(sopa.Leilao);
+
+            var lances = Lances.OrderBy(l => l.Valor);
+
+            foreach(Lance c in lances)
+            {
+                Console.WriteLine(c.Leilao);
+            }
+
+        }
+
+        public void DeterminarGnahadorOferta()
+        {
+            var ganahdor = Lances.OrderByDescending(l => l.Valor).Select(x => (x.DataHoraLance <= DataMaxLances) && x.Valor <= Valor).First();
+        }
     }
 }
