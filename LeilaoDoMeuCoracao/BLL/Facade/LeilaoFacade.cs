@@ -2,6 +2,7 @@
 using LeilaoDoMeuCoracao.PL;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,5 +32,27 @@ namespace LeilaoDoMeuCoracao.BLL.Facade
         public async Task DeleteById(int? id) => await leilaoDAO.DeleteById(id);
 
         public bool LeilaoExists(int id) => leilaoDAO.LeilaoExists(id);
+
+        public async Task<User> DeterminarXubrilhos(int LeilaoId)
+        {
+            Leilao leilao = await leilaoDAO.DetailsById(LeilaoId);
+            Lance lanceGanhador;
+
+            if (leilao.TipoLeilaoEnum == PL.Enum.TipoLeilaoEnum.DEMANDA)
+            {
+                lanceGanhador = leilao.Lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor < leilao.Valor).FirstOrDefault();
+            }
+            else
+            {
+                lanceGanhador = leilao.Lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor > leilao.Valor).FirstOrDefault();
+            }        
+
+            if (lanceGanhador == null)
+            {
+                return null;
+            }
+
+            return lanceGanhador.User;
+        }
     }
 }

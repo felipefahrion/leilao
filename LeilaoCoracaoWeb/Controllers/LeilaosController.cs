@@ -136,5 +136,10 @@ namespace LeilaoCoracaoWeb.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> DeterminarXubrilhos(int Id)
+        {         
+            return View(await leilaoFacade.DeterminarXubrilhos(Id));
+        }
     }
 }

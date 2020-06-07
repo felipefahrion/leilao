@@ -8965,19 +8965,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Felipe Fahrion\\.nuget\\packages\\": {}
+    "C:\\Users\\arthu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoCoracaoWeb\\LeilaoCoracaoWeb.csproj",
+      "projectUniqueName": "C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\leilao\\LeilaoCoracaoWeb\\LeilaoCoracaoWeb.csproj",
       "projectName": "LeilaoCoracaoWeb",
-      "projectPath": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoCoracaoWeb\\LeilaoCoracaoWeb.csproj",
-      "packagesPath": "C:\\Users\\Felipe Fahrion\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoCoracaoWeb\\obj\\",
+      "projectPath": "C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\leilao\\LeilaoCoracaoWeb\\LeilaoCoracaoWeb.csproj",
+      "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\leilao\\LeilaoCoracaoWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Felipe Fahrion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8990,8 +8990,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {
-              "projectPath": "C:\\Users\\Felipe Fahrion\\Downloads\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj"
+            "C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj": {
+              "projectPath": "C:\\Users\\arthu\\OneDrive\\Área de Trabalho\\leilao\\LeilaoDoMeuCoracao\\LeilaoDoMeuCoracao.csproj"
             }
           }
         }
@@ -9044,6 +9044,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9052,7 +9058,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

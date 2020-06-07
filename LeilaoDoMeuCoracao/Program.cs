@@ -127,7 +127,6 @@ namespace LeilaoDoMeuCoracao
             List<Lance> lances = new List<Lance> {
                 new Lance
                 {
-                    LanceId = 11,
                     DataHoraLance = new DateTime(2020, 4, 16, 12, 0, 0, 0),
                     Valor = 300,
                     Aceito = false,
@@ -135,7 +134,6 @@ namespace LeilaoDoMeuCoracao
                 },
                 new Lance
                 {
-                    LanceId = 12,
                     DataHoraLance = new DateTime(2020, 7, 30, 12, 0, 0, 0),
                     Valor = 400,
                     Aceito = false,
@@ -143,7 +141,6 @@ namespace LeilaoDoMeuCoracao
                 },
                 new Lance
                 {
-                    LanceId = 13,
                     DataHoraLance = new DateTime(2020, 2, 22, 12, 0, 0, 0),
                     Valor = 500,
                     Aceito = true,
@@ -154,7 +151,6 @@ namespace LeilaoDoMeuCoracao
             List<Lance> lances2 = new List<Lance> {
                 new Lance
                 {
-                    LanceId = 21,
                     DataHoraLance = new DateTime(2020, 4, 16, 12, 0, 0, 0),
                     Valor = 300,
                     Aceito = false,
@@ -162,7 +158,6 @@ namespace LeilaoDoMeuCoracao
                 },
                 new Lance
                 {
-                    LanceId = 22,
                     DataHoraLance = new DateTime(2020, 7, 30, 12, 0, 0, 0),
                     Valor = 400,
                     Aceito = false,
@@ -170,7 +165,6 @@ namespace LeilaoDoMeuCoracao
                 },
                 new Lance
                 {
-                    LanceId = 23,
                     DataHoraLance = new DateTime(2020, 2, 22, 12, 0, 0, 0),
                     Valor = 500,
                     Aceito = true,
