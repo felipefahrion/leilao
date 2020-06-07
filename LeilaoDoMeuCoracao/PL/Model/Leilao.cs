@@ -25,7 +25,16 @@ namespace LeilaoDoMeuCoracao.PL
 
         public void DeterminarGanhadorDemanda()
         {
-            var ganahdor = Lances.OrderBy(l => l.Valor).Select(x => (x.DataHoraLance <= DataMaxLances) && x.Valor >= Valor).First();
+            Lance sopa = Lances.Where(x => (x.DataHoraLance <= DataMaxLances) && x.Valor >= Valor).ToList().FirstOrDefault();
+            Console.WriteLine(sopa.Leilao);
+
+            var lances = Lances.OrderBy(l => l.Valor);
+
+            foreach(Lance c in lances)
+            {
+                Console.WriteLine(c.Leilao);
+            }
+
         }
 
         public void DeterminarGnahadorOferta()

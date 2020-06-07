@@ -311,6 +311,46 @@ namespace LeilaoDoMeuCoracao
                 Console.WriteLine(userNome);
             }
             #endregion
+
+            #region Teste Ganhador Demanda
+            Console.WriteLine();
+            Console.WriteLine("Ganhador Demanda");
+            Console.WriteLine();
+
+            foreach (Leilao l in leiloes)
+            {
+                Lance lanceGanhador = l.Lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= l.DataMaxLances) && x.Valor > l.Valor).FirstOrDefault();
+
+                if(lanceGanhador == null)
+                {
+                    Console.WriteLine("Nenhum encontrado");
+                }
+                else
+                {
+                    Console.WriteLine(lanceGanhador.User.Nome);
+                }
+            }
+            #endregion
+
+            #region Teste Ganhador Oferta
+            Console.WriteLine();
+            Console.WriteLine("Ganhador Oferta");
+            Console.WriteLine();
+
+            foreach (Leilao l in leiloes)
+            {
+                Lance lanceGanhador = l.Lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= l.DataMaxLances) && x.Valor < l.Valor).FirstOrDefault();
+
+                if (lanceGanhador == null)
+                {
+                    Console.WriteLine("Nenhum encontrado");
+                }
+                else
+                {
+                    Console.WriteLine(lanceGanhador.User.Nome);
+                }
+            }
+            #endregion
         }
 
         private static void ItensComCategoriasSeed(LeilaoContext db, List<Categoria> categorias, List<Item> itens)
