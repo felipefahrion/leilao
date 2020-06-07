@@ -21,7 +21,7 @@ namespace LeilaoCoracaoWeb.Controllers
 
         // GET: Leilaos
         public async Task<IActionResult> Index() => View(await leilaoFacade.ListAll());
-       
+
         // GET: Leilaos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -135,6 +135,11 @@ namespace LeilaoCoracaoWeb.Controllers
             await leilaoFacade.DeleteById(id);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DeterminarXubrilhos(int Id)
+        {
+            return View(await leilaoFacade.DeterminarXubrilhos(Id));
         }
     }
 }
