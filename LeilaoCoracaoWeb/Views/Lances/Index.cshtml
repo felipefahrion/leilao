@@ -28,24 +28,29 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataHoraLance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aceito)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Leilao.LeilaoId)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.LanceId">Details</a> |
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            @if (item.Leilao.StatusLeilaoEnum.ToString().Equals("ABERTO"))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataHoraLance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aceito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leilao.LeilaoId)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.LanceId">Details</a> |
+                    </td>
+                </tr>
+            }
+
+        }
     </tbody>
 </table>
