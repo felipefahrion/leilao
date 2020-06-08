@@ -42,11 +42,11 @@ namespace LeilaoDoMeuCoracao.BLL.Facade
 
             if (leilao.TipoLeilaoEnum == PL.Enum.TipoLeilaoEnum.DEMANDA)
             {
-                lanceGanhador = lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor < leilao.Valor).FirstOrDefault();
+                lanceGanhador = lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor > leilao.Valor).FirstOrDefault();
             }
             else
             {
-                lanceGanhador = lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor > leilao.Valor).FirstOrDefault();
+                lanceGanhador = lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor < leilao.Valor).FirstOrDefault();
             }
 
             if (lanceGanhador == null)

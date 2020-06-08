@@ -319,7 +319,7 @@ namespace LeilaoDoMeuCoracao
 
             foreach (Leilao l in leiloes)
             {
-                Lance lanceGanhador = l.Lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= l.DataMaxLances) && x.Valor > l.Valor).FirstOrDefault();
+                Lance lanceGanhador = l.Lances.OrderByDescending(x => x.Valor).Where(x => l.TipoLeilaoEnum.ToString().Equals("DEMANDA") && (x.DataHoraLance <= l.DataMaxLances) && x.Valor > l.Valor).FirstOrDefault();
 
                 if(lanceGanhador == null)
                 {
@@ -339,7 +339,7 @@ namespace LeilaoDoMeuCoracao
 
             foreach (Leilao l in leiloes)
             {
-                Lance lanceGanhador = l.Lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= l.DataMaxLances) && x.Valor < l.Valor).FirstOrDefault();
+                Lance lanceGanhador = l.Lances.OrderBy(x => x.Valor).Where(x => l.TipoLeilaoEnum.ToString().Equals("OFERTA") && (x.DataHoraLance <= l.DataMaxLances) && x.Valor < l.Valor).FirstOrDefault();
 
                 if (lanceGanhador == null)
                 {

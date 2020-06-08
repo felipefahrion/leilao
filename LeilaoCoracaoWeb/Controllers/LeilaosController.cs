@@ -139,7 +139,12 @@ namespace LeilaoCoracaoWeb.Controllers
 
         public async Task<IActionResult> DeterminarLanceGanhador(int Id)
         {
-            return View(await leilaoFacade.DeterminarLanceGanhador(Id));
+            Lance lance = await leilaoFacade.DeterminarLanceGanhador(Id);
+            if (lance == null)
+            {
+                return View(null);
+            }
+            return View(lance);
         }
     }
 }
