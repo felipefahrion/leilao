@@ -137,9 +137,9 @@ namespace LeilaoCoracaoWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> DeterminarXubrilhos(int Id)
+        public async Task<IActionResult> DeterminarLanceGanhador(int Id)
         {
-            return View(await leilaoFacade.DeterminarXubrilhos(Id));
+            return View(await leilaoFacade.DeterminarLanceGanhador(Id));
         }
     }
 }

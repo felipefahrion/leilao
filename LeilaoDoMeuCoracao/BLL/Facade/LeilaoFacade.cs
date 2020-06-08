@@ -33,18 +33,20 @@ namespace LeilaoDoMeuCoracao.BLL.Facade
 
         public bool LeilaoExists(int id) => leilaoDAO.LeilaoExists(id);
 
-        public async Task<User> DeterminarXubrilhos(int LeilaoId)
+        public async Task<Lance> DeterminarLanceGanhador(int LeilaoId)
         {
+            ICollection<Lance> lances = await new LanceFacade().FindAllById(LeilaoId);
+
             Leilao leilao = await leilaoDAO.DetailsById(LeilaoId);
             Lance lanceGanhador;
 
             if (leilao.TipoLeilaoEnum == PL.Enum.TipoLeilaoEnum.DEMANDA)
             {
-                lanceGanhador = leilao.Lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor < leilao.Valor).FirstOrDefault();
+                lanceGanhador = lances.OrderBy(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor < leilao.Valor).FirstOrDefault();
             }
             else
             {
-                lanceGanhador = leilao.Lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor > leilao.Valor).FirstOrDefault();
+                lanceGanhador = lances.OrderByDescending(x => x.Valor).Where(x => (x.DataHoraLance <= leilao.DataMaxLances) && x.Valor > leilao.Valor).FirstOrDefault();
             }
 
             if (lanceGanhador == null)
@@ -52,7 +54,7 @@ namespace LeilaoDoMeuCoracao.BLL.Facade
                 return null;
             }
 
-            return lanceGanhador.User;
+            return lanceGanhador;
         }
     }
 }

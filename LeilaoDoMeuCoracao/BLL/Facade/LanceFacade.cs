@@ -18,6 +18,9 @@ namespace LeilaoDoMeuCoracao.BLL.Facade
 
         public LeilaoContext GetLeilaoContext() => lanceDAO.GetContext();
         public async Task<List<Lance>> ListAll() => await lanceDAO.ListAll();
+
+        public async Task<List<Lance>> FindAllById(int leilaoId) => await lanceDAO.FindAllById(leilaoId);
+
         public async Task<Lance> DetailsById(int? id) => await lanceDAO.DetailsById(id);
         public async Task Create(Lance lance) => await lanceDAO.Create(lance);
     }

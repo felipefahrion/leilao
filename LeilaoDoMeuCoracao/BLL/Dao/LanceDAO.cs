@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,12 @@ namespace LeilaoDoMeuCoracao.BLL.Dao
         public async Task<List<Lance>> ListAll()
         {
             var leilaoContext = _context.Lances.Include(l => l.Leilao);
+            return await leilaoContext.ToListAsync();
+        }
+
+        public async Task<List<Lance>> FindAllById(int leilaoId)
+        {
+            var leilaoContext = _context.Lances.Include(l => l.Leilao).Include(l => l.User).Where(l => l.LeilaoId == leilaoId);
             return await leilaoContext.ToListAsync();
         }
 
