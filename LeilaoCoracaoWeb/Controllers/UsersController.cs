@@ -6,13 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeilaoDoMeuCoracao.PL;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace LeilaoCoracaoWeb.Controllers
 {
     public class UsersController : Controller
     {
         private readonly LeilaoContext _context;
-
         public UsersController(LeilaoContext context)
         {
             _context = context;
