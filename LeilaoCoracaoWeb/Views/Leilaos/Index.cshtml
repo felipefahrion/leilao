@@ -4,57 +4,65 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    .card + div {
+        margin-left: 10px;
+    }
+
+    .card-body p {
+        margin-left: 15px;
+    }
+</style>
+
+<h1>ver leilões</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">criar novo leilão</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataMaxLances)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoLeilaoEnum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusLeilaoEnum)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataMaxLances)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Valor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoLeilaoEnum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StatusLeilaoEnum)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.LeilaoId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.LeilaoId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.LeilaoId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<div style="display: flex">
+
+    @foreach (var item in Model)
+    {
+        <div class="card text-white bg-dark mb-3" style="flex: 1.5">
+             
+            <h5 class="card-header">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 4h14v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4zm7-2.5A2.5 2.5 0 0 0 5.5 4h-1a3.5 3.5 0 1 1 7 0h-1A2.5 2.5 0 0 0 8 1.5z" />
+                </svg> 
+                Leilão @item.LeilaoId
+            </h5>
+            <div class="card-body">
+                <div class="card-title">
+                    @Html.DisplayNameFor(model => model.DataInicio): <span>@Html.DisplayFor(modelItem => item.DataInicio)</span>
+                </div>
+                <div class="card-title">
+                    @Html.DisplayNameFor(modelItem => item.DataMaxLances): @Html.DisplayFor(modelItem => item.DataMaxLances)
+                </div>
+
+                <div class="card-title">
+                    @Html.DisplayNameFor(model => model.Valor): <span>@Html.DisplayFor(modelItem => item.Valor)</span>
+                </div>
+
+
+                <div class="card-title">
+                    @Html.DisplayNameFor(model => model.TipoLeilaoEnum): <span>@Html.DisplayFor(modelItem => item.TipoLeilaoEnum)</span>
+                </div>
+
+
+                <div class="card-title">
+                    @Html.DisplayNameFor(model => model.StatusLeilaoEnum): <span>@Html.DisplayFor(modelItem => item.StatusLeilaoEnum)</span>
+                </div>
+
+
+                <a asp-action="Details" asp-route-id="@item.LeilaoId">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-justify-left text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    Detalhes
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
