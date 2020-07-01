@@ -4,53 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lances</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Fazer novo lance</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataHoraLance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aceito)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Leilao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            @if (item.Leilao.StatusLeilaoEnum.ToString().Equals("ABERTO"))
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHoraLance)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Valor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aceito)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Leilao.LeilaoId)
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.LanceId">Details</a> |
-                    </td>
-                </tr>
-            }
+@foreach (var item in Model)
+{
+    @if (item.Leilao.StatusLeilaoEnum.ToString().Equals("ABERTO"))
+    {
+        <div class="card text-white bg-dark mb-3" style="flex: 1.5">
 
-        }
-    </tbody>
-</table>
+            <h5 class="card-header">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
+                    <path d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                </svg>
+                Lance para leilão: @item.LeilaoId
+            </h5>
+            <div class="card-body">
+                <div class="card-title">
+                    @Html.DisplayNameFor(modelItem => item.DataHoraLance): <span>@Html.DisplayFor(modelItem => item.DataHoraLance)</span>
+                </div>
+                <div class="card-title">
+                    @Html.DisplayNameFor(modelItem => item.Valor): @Html.DisplayFor(modelItem => item.Valor)
+                </div>
+
+                <div class="card-title">
+                    @Html.DisplayNameFor(modelItem => item.Leilao.LeilaoId): <span>@Html.DisplayFor(modelItem => item.Leilao.LeilaoId)</span>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+

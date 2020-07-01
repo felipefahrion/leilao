@@ -9,45 +9,28 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoBreve)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoCompleta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagem)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoBreve)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoCompleta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
-            </td>
-        </tr>
+@foreach (var item in Model)
+{
+
+    <div class="card text-white bg-dark mb-3" style="flex: 1.5">
+
+        <h5 class="card-header">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+            </svg>
+            @item.Nome
+        </h5>
+        <div class="card-body">
+            <div class="card-title">
+                @Html.DisplayNameFor(modelItem => item.DescricaoBreve): @Html.DisplayFor(modelItem => item.DescricaoBreve)
+            </div>
+            <div class="card-title">
+                @Html.DisplayNameFor(modelItem => item.DescricaoCompleta): <span>@Html.DisplayFor(modelItem => item.DescricaoCompleta)</span>
+            </div>
+            <div class="card-title">
+                @Html.DisplayNameFor(modelItem => item.Imagem): <span>@Html.DisplayFor(modelItem => item.Imagem)</span>
+            </div>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+
